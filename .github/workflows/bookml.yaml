@@ -18,6 +18,7 @@ jobs:
                 mv "${file}" "${file}"~
               fi
             done
+            /usr/bin/git add -A && /usr/bin/git commit -m "Copied source files for beamer conversion"
 
       - name: Compile with BookML
         uses: vlmantova/bookml-action@v1
