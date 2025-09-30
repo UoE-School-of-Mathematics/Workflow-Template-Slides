@@ -7,8 +7,11 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-        with:
-            ref: ${{ github.head_ref }}
+
+      - name: Configure git
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
 
       - name: Copy source files and strip beamer overlay specs
         run: |
@@ -21,8 +24,15 @@ jobs:
               fi
             done
         
-      - name: Commit all changed files back to the repository
-        uses: stefanzweifel/git-auto-commit-action@v6
+      # - name: Commit all changed files back to the repository
+        # uses: stefanzweifel/git-auto-commit-action@v6
+
+      - name: Commit and push modified files to GitHub
+        run: |
+          git checkout main
+          git add -A
+          git diff-index --quiet HEAD || git commit -m "Add new files"
+          git push origin main
 
       - name: Compile with BookML
         uses: vlmantova/bookml-action@v1
@@ -56,10 +66,10 @@ jobs:
             fi
           done
 
-      - name: Configure git
-        run: |
-          git config --global user.name "GitHub Actions"
-          git config --global user.email "actions@github.com"
+      # - name: Configure git
+        # run: |
+          # git config --global user.name "GitHub Actions"
+          # git config --global user.email "actions@github.com"
 
       - name: Commit and push changes to GitHub Pages
         run: |
