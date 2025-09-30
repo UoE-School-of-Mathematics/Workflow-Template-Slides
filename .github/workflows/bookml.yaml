@@ -7,6 +7,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+            ref: ${{ github.head_ref }}
 
       - name: Copy source files and strip beamer overlay specs
         run: |
