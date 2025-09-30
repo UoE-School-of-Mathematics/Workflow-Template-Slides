@@ -1,0 +1,82 @@
+\RequirePackage{bookml/bookml}
+
+\iflatexml
+    \documentclass{article}
+
+    % % Use this is you use foils
+    % \newcommand{\foilhead}[1]{\section*{#1}}
+
+    % Use this if you use beamer
+    \renewenvironment{frame}[1]{\section*{#1}}{}
+    % NOTE: all frames must start with \begin{frame}{Frame title}
+    % All frames without a title must start with \begin{frame}{}
+
+    % HOWEVER: this will also work with \begin{frame}{Frame title},
+    % this is dealt with by line 17 in .github/workflows/bookml.yaml
+
+    % Make sure any beamer-specific commands are provided but do nothing
+    \newcommand{\pause}{}
+    \newcommand{\visible}{}
+    \newcommand{\onslide}{}
+
+\else
+    % You can use your usual documentclass command and parameters here
+    \documentclass[hyperref={pdfusetitle}]{beamer}
+
+    % If you use foils instead
+    % \documentclass[17pt,Screen16to9,pdftex]{foils}
+
+    % Put all your beamer settings here so they're used for the PDF version
+\fi
+
+
+\newcommand\coursename{Demo Course}
+\newcommand\coursecode{MATXXXXXXX}
+\newcommand\coursedescription{A description of the course.}
+\newcommand\slidestitle{Title of these slides}
+\newcommand\slidesauthor{Author}
+\newcommand\slidesdate{2025--26}
+
+\input{preamble/SoM_slides}
+\input{preamble/custom}
+
+\begin{document}
+
+\maketitle
+
+% == Slides go here
+\begin{frame}{First slide}
+\end{frame}
+
+\begin{frame}{Second slide}
+\end{frame}
+
+\begin{frame}{}
+    A frame without a title
+\end{frame}
+
+\begin{frame}{Testing with frametitle}
+    test test
+\end{frame}
+
+\begin{frame}
+    \frametitle{Another frametitle but on the next line}
+    The rest of the frame content
+\end{frame}
+
+\begin{frame}{Final slide}
+\end{frame}
+
+
+
+
+%    Bibliography styles amsplain or harvard are also acceptable.
+\bibliographystyle{amsalpha}
+\bibliography{biblio}
+
+% Copyright information (for published pages)
+\iflatexml
+    \copyright The University of Edinburgh, 2025. Generated with \href{https://vlmantova.github.io/bookml/}{BookML}.
+\fi
+
+\end{document}
