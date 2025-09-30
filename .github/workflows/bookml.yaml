@@ -37,6 +37,7 @@ jobs:
       - name: Compile with BookML
         uses: vlmantova/bookml-action@v1
         with:
+          checkout: false
           scheme: full
           timeout-minutes: 6
           replace-bookml: true
