@@ -8,6 +8,17 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Copy source files and strip beamer overlay specs
+        run: |
+            for file in *.tex; do
+              if [[ "$file" != *_HTML.tex ]]; then 
+                newfile=$(basename "${file}" .tex)_HTML.tex
+                sed 's/\(\\[a-zA-Z]*\)<\([0-9]\?-\?[0-9]\?,\?\)\+>/\1/g' "${file}" > "${newfile}"
+                sed -i 's/\(\\begin{frame}\)\s*\\frametitle{\(.*\)}/\1{\2}/g' "${newfile}"
+                mv "${file}" "${file}"~
+              fi
+            done
+
       - name: Compile with BookML
         uses: vlmantova/bookml-action@v1
         with:
@@ -16,10 +27,16 @@ jobs:
           replace-bookml: true
           version: v0.18.1
 
+      - name: Recover the name of the original tex files
+        run: |
+            for file in *.tex~; do
+                mv "${file}" $(basename "${file}" .tex~).tex
+            done
+
       - name: Extract zip files
         run: |
           mkdir -p docs
-          for file in *.zip; do
+          for file in *_HTML.zip; do
             if [[ "$file" != SCORM*.zip && "$file" != AUX*.zip ]]; then 
               unzip -o "$file" -d docs
             fi

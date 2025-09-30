@@ -1,0 +1,32 @@
+.body-inner {
+  top: 10px;
+}
+
+
+.book .book-body .page-wrapper .page-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 10px 0 10px;
+}
+
+
+.book .book-body .page-wrapper .page-inner section.normal h1 {
+  margin-top: 0em;
+}
+
+
+.book.font-size-0 .book-body .page-inner section {
+  font-size: 1.8rem;
+}
+.book.font-size-1 .book-body .page-inner section {
+  font-size: 2.2rem;
+}
+.book.font-size-2 .book-body .page-inner section {
+  font-size: 2.6rem;
+}
+.book.font-size-3 .book-body .page-inner section {
+  font-size: 3.0rem;
+}
+.book.font-size-4 .book-body .page-inner section {
+  font-size: 3.4rem;
+}
