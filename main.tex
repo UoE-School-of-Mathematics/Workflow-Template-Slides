@@ -7,17 +7,26 @@
     % \newcommand{\foilhead}[1]{\section*{#1}}
 
     % Use this if you use beamer
+    \usepackage{beamerarticle}
     \renewenvironment{frame}[1]{\section*{#1}}{}
     % NOTE: all frames must start with \begin{frame}{Frame title}
     % All frames without a title must start with \begin{frame}{}
 
-    % HOWEVER: this will also work with \begin{frame} \frametitle{Frame title},
-    % this is dealt with by line 17 in .github/workflows/bookml.yaml
+    % % Make sure any beamer-specific commands are provided but do nothing
+    % \newcommand{\pause}{}
+    % \newcommand{\onslide}{}
+    % \newcommand{\temporal}{}
+    % \newcommand{\only}{}
+    % \newcommand{\alt}{}
+    % \newcommand{\visible}{}
+    % \newcommand{\uncover}{}
+    % \newcommand{\invisible}{}
 
-    % Make sure any beamer-specific commands are provided but do nothing
-    \newcommand{\pause}{}
-    \newcommand{\visible}{}
-    \newcommand{\onslide}{}
+    % \newenvironment{onlyenv}{}{}
+    % \newenvironment{altenv}{}{}
+    % \newenvironment{visibleenv}{}{}
+    % \newenvironment{uncoverenv}{}{}
+    % \newenvironment{invisibleenv}{}{}
 
 \else
     % You can use your usual documentclass command and parameters here
