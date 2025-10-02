@@ -24,9 +24,6 @@ jobs:
                 mv "${file}" "${file}"~
               fi
             done
-        
-      # - name: Commit all changed files back to the repository
-        # uses: stefanzweifel/git-auto-commit-action@v6
 
       - name: Commit and push modified files to GitHub
         run: |
@@ -35,7 +32,7 @@ jobs:
           git push origin main
 
       - name: Compile with BookML
-        uses: vlmantova/bookml-action@v1
+        uses: vlmantova/bookml-action@v1.2.1
         with:
           checkout: false
           scheme: full
