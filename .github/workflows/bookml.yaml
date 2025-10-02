@@ -19,6 +19,7 @@ jobs:
           for file in *.tex; do
             if [[ "$file" != *_HTML.tex ]]; then 
               newfile=$(basename "${file}" .tex)_HTML.tex
+              cp "${file}" "${newfile}"
               # sed 's/\(\\[a-zA-Z]*\)\({[a-zA-Z]*}\)\?<\([0-9]\?-\?[0-9]\?,\?\)\+>/\1/g' "${file}" > "${newfile}"
               # sed -i 's/\(\\begin{frame}\)\s*\\frametitle{\(.*\)}/\1{\2}/g' "${newfile}"
               mv "${file}" "${file}"~
