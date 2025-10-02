@@ -30,7 +30,7 @@
     exclude-result-prefixes    = "f func b">
 
   <!-- global variables -->
-  <xsl:param name="BMLVERSION">v0.17.0</xsl:param>
+  <xsl:param name="BMLVERSION">v0.18.1</xsl:param>
 
   <xsl:param name="BMLSTYLE">
     <xsl:choose>
