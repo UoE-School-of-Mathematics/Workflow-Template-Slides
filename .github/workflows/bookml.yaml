@@ -42,8 +42,8 @@ jobs:
         run: |
           for file in *.tex~; do
             mv "${file}" $(basename "${file}" .tex~).tex
+            git add "${file}"
           done
-          git add -A
           git diff-index --quiet HEAD || git commit -m "Recovered original source files"
           git push origin main
 
