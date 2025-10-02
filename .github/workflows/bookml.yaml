@@ -41,8 +41,9 @@ jobs:
       - name: Recover the name of the original tex files
         run: |
           for file in *.tex~; do
-            mv "${file}" $(basename "${file}" .tex~).tex
-            git add "${file}"
+            originalfile=$(basename "${file}" .tex~).tex
+            mv "${file}" "${originalfile}"
+            git add "${originalfile}"
           done
           git diff-index --quiet HEAD || git commit -m "Recovered original source files"
           git push origin main
