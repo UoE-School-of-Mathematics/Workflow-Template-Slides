@@ -48,7 +48,6 @@ jobs:
           for file in *.tex~; do
             originalfile=$(basename "${file}" .tex~).tex
             mv "${file}" "${originalfile}"
-            rm "${file}"
             git add "${originalfile}"
           done
           git diff-index --quiet HEAD || git commit -m "Recovered original source files"
