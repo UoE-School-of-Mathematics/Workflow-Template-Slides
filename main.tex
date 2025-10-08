@@ -1,0 +1,69 @@
+\RequirePackage{bookml/bookml}
+
+\iflatexml
+    \documentclass{article}
+
+\else
+    % You can use your usual documentclass command and parameters here
+    \documentclass[hyperref={pdfusetitle}]{beamer}
+
+    % If you use foils instead
+    % \documentclass[17pt,Screen16to9,pdftex]{foils}
+
+    % Put all your beamer settings here so they're used for the PDF version
+
+\fi
+
+
+\newcommand\coursename{Demo Course}
+\newcommand\coursecode{MATXXXXXXX}
+\newcommand\coursedescription{A description of the course.}
+\newcommand\slidestitle{Title of these slides}
+\newcommand\slidesauthor{Author}
+\newcommand\slidesdate{2025--26}
+
+\input{preamble/SoM_slides}
+\input{preamble/custom}
+
+\begin{document}
+
+\iflatexml\else
+    \frame{\titlepage}
+\fi
+
+% == Your slides go here
+
+\begin{frame}{First slide}
+    \begin{itemize}
+        \item<1-> A list item
+        \item<2-> and another
+        \item<3-> etc
+    \end{itemize}
+
+    \visible<3->{This should only show up on the third beat.}
+\end{frame}
+
+\begin{frame} \frametitle{Second slide using frametitle}
+\end{frame}
+
+\begin{frame}{}
+    A frame without a title
+\end{frame}
+
+\begin{frame}{Final slide}
+    Some content on this frame
+\end{frame}
+
+% == 
+
+
+%    Bibliography styles amsplain or harvard are also acceptable.
+\bibliographystyle{amsalpha}
+\bibliography{biblio}
+
+% Copyright information (for published pages)
+\iflatexml
+    \copyright The University of Edinburgh, 2025. Generated with \href{https://vlmantova.github.io/bookml/}{BookML}.
+\fi
+
+\end{document}
