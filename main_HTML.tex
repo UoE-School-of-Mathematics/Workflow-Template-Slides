@@ -3,40 +3,6 @@
 \iflatexml
     \documentclass{article}
 
-    % NOTE: all frames must start with either:
-    %     \begin{frame}{Frame title}
-    % or, on the *same line*:
-    %     \begin{frame}{Frame title}
-    % All frames without a title must start with \begin{frame}{}.
-
-    % (For tinkering with this, see the `sed` commands
-    % in .github/workflows/bookml.yaml)
-
-    % Comment this out if you want visible slide numbers
-    \renewcommand\thesection{}
-
-    \let\oldframe\frame
-    \renewenvironment{frame}[1]{\section{#1}}{}
-
-    % % Use this instead if you use foils
-    % \newcommand{\foilhead}[1]{\section{#1}}
-
-    % Make sure any beamer-specific commands are provided but do nothing
-    \newcommand{\pause}{}
-    \newcommand{\onslide}{}
-    \newcommand{\temporal}{}
-    \newcommand{\only}{}
-    \newcommand{\alt}{}
-    \newcommand{\visible}{}
-    \newcommand{\uncover}{}
-    \newcommand{\invisible}{}
-
-    \newenvironment{onlyenv}{}{}
-    \newenvironment{altenv}{}{}
-    \newenvironment{visibleenv}{}{}
-    \newenvironment{uncoverenv}{}{}
-    \newenvironment{invisibleenv}{}{}
-
 \else
     % You can use your usual documentclass command and parameters here
     \documentclass[hyperref={pdfusetitle}]{beamer}
