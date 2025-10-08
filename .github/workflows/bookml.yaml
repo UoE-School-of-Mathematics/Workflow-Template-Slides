@@ -20,8 +20,13 @@ jobs:
             if [[ "$file" != *_HTML.tex ]]; then 
               newfile=$(basename "${file}" .tex)_HTML.tex
               cp "${file}" "${newfile}"
-              # sed 's/\(\\[a-zA-Z]*\)\({[a-zA-Z]*}\)\?<\([0-9]\?-\?[0-9]\?,\?\)\+>/\1/g' "${file}" > "${newfile}"
-              # sed -i 's/\(\\begin{frame}\)\s*\\frametitle{\(.*\)}/\1{\2}/g' "${newfile}"
+
+              # Removes overlay indicators e.g. <3->, <4>, <5-8>, <+->
+              sed 's/\(\\[a-zA-Z]*\)<\([0-9\|+]\?-\?[0-9]\?,\?\)\+>/\1/g' "${file}" > "${newfile}"
+  
+              # Changes \begin{frame} \frametitle{x} to \begin{frame}{x}
+              sed -i 's/\(\\begin{frame}\)\s*\\frametitle{\(.*\)}/\1{\2}/g' "${newfile}"
+  
               mv "${file}" "${file}"~
             fi
           done
@@ -30,13 +35,13 @@ jobs:
           git push origin main
 
       - name: Compile with BookML
-        uses: vlmantova/bookml-action@v1.2.1
+        uses: vlmantova/bookml-action@v1.2.3
         with:
           checkout: false
           scheme: full
           timeout-minutes: 6
           replace-bookml: true
-          version: v0.18.1
+          version: v0.20.0
 
       - name: Recover the name of the original tex files
         run: |
