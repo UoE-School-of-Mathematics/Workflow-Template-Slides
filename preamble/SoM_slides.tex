@@ -91,13 +91,13 @@
     % in .github/workflows/bookml.yaml)
 
     % Comment this out if you want visible slide numbers
-    \renewcommand\thesection{}
+    \renewcommand\thesubsection{}
 
     \let\oldframe\frame
-    \renewenvironment{frame}[1]{\section{#1}}{}
+    \renewenvironment{frame}[1]{\subsection{#1}}{}
 
     % % Use this instead if you use foils
-    % \newcommand{\foilhead}[1]{\section{#1}}
+    % \newcommand{\foilhead}[1]{\subsection{#1}}
 
     % Make sure any beamer-specific commands are provided but do nothing
     \newcommand{\pause}{}
